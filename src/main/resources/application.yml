@@ -1,1 +1,26 @@
+server:
+    port: 8087
 
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health, info
+    endpoint:
+        health:
+            show-details: never
+---
+spring:
+    config:
+        activate:
+            on-profile: prod1
+server:
+    port: 8087
+
+---
+spring:
+    config:
+        activate:
+            on-profile: prod2
+server:
+    port: 8088

@@ -1,9 +1,9 @@
 version: '3'
 services:
-    nginx:
-        image: nginx
+    web:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
         ports:
             - "80:80"
-        volumes:
-            - ./index.html:/usr/share/nginx/html/index.html
-        container_name: nginx-starter
+        container_name: nginx-starter-web
