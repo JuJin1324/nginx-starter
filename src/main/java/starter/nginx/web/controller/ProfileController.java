@@ -29,4 +29,18 @@ public class ProfileController {
                 .findAny()
                 .orElse(defaultProfile);
     }
+
+    @GetMapping("/sleep")
+    public String sleep() throws InterruptedException {
+        Thread.sleep(10000);
+
+        List<String> profiles = Arrays.asList(env.getActiveProfiles());
+        List<String> prodProfiles = Arrays.asList("prod1", "prod2");
+        String defaultProfile = profiles.isEmpty() ? "default" : profiles.get(0);
+
+        return "return after sleep 10s profile: " + profiles.stream()
+                .filter(prodProfiles::contains)
+                .findAny()
+                .orElse(defaultProfile);
+    }
 }

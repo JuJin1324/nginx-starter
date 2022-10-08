@@ -84,3 +84,12 @@
 
 ### 참조사이트
 > [Nginx 무중단 배포](https://yeonyeon.tistory.com/76)
+
+## NginX Reload
+### NginX Reload 시 기존 요청은?
+> NginX Reload 이전에 Prod1 에 보냈던 요청에 대한 응답이 오기 전에 Prod2 로 교체가 되버리면 해당 요청은 어떻게 되는가?   
+> docker 실행 이후에 `/home/ec2-user/nginx-starter/scripts` 에서 `./start.sh` 를 두번 실행해서(약 2초 정도 텀을 두고 실행)
+> prod1 과 prod2 를 실행한 이후에 인터넷 브라우저를 통해서 `localhost/sleep` API 호출을 하고 요청이 오기전에 
+> docker 내부에서 `./switch.sh` 를 실행해서 NginX 에 연결된 애플리케이션을 prod1 -> prod2 로 변경한다.
+> 결과적으로 애플리케이션이 prod1 일 때 요청했던 `localhost/sleep` API 의 요청이 정상적으로 응답한다.
+
