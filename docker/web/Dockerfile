@@ -3,17 +3,11 @@ LABEL maintainer="jujin1324@daum.net"
 LABEL dockerhub="https://hub.docker.com/_/ubuntu"
 
 RUN ["apt", "update"]
+RUN apt install -y sudo curl vim wget \
+    openjdk-11-jdk \
+    nginx
 
-# install basic tools
-RUN ["apt", "install", "-y", "curl"]
-RUN ["apt", "install", "-y", "vim"]
-RUN ["apt", "install", "-y", "wget"]
-
-# install java 11
-RUN ["apt", "install", "-y", "openjdk-11-jdk"]
-
-# install nginx
-RUN ["apt", "install", "-y", "nginx"]
+# setting nginx
 ADD nginx/application.conf /etc/nginx/conf.d/
 ADD nginx/service-url.inc /etc/nginx/conf.d/
 

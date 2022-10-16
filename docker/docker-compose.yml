@@ -6,4 +6,4 @@ services:
             dockerfile: Dockerfile
         ports:
             - "80:80"
-        container_name: nginx-starter-web
+        container_name: web-nginx-starter
