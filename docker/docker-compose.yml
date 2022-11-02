@@ -1,9 +1,0 @@
-version: '3'
-services:
-    web:
-        build:
-            context: ./web
-            dockerfile: Dockerfile
-        ports:
-            - "80:80"
-        container_name: web-nginx-starter

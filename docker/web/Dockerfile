@@ -15,7 +15,6 @@ ADD nginx/service-url.inc /etc/nginx/conf.d/
 RUN ["mkdir", "-p", "/home/ec2-user/nginx-starter/zip"]
 ADD nginx-starter-0.0.1-SNAPSHOT.jar /home/ec2-user/nginx-starter/zip/
 ADD scripts /home/ec2-user/nginx-starter/scripts/
+RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
-# start.sh
-ADD start.sh /
-CMD ["sh", "start.sh"]
+CMD ["nginx"]
