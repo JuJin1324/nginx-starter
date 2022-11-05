@@ -17,4 +17,4 @@ ADD nginx-starter-0.0.1-SNAPSHOT.jar /home/ec2-user/nginx-starter/zip/
 ADD scripts /home/ec2-user/nginx-starter/scripts/
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
-CMD ["nginx"]
+ENTRYPOINT ["nginx"]
