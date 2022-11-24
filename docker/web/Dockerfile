@@ -2,8 +2,7 @@ FROM ubuntu
 LABEL maintainer="jujin1324@daum.net"
 LABEL dockerhub="https://hub.docker.com/_/ubuntu"
 
-RUN ["apt", "update"]
-RUN apt install -y sudo curl vim wget \
+RUN apt update; apt install -y sudo curl vim wget \
     openjdk-11-jdk \
     nginx
 
