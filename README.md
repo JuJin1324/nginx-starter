@@ -106,17 +106,15 @@
 
 ### starter.conf
 > ```nginx
-> upstream starter-server {
->   server localhost:8087;
+> upstream app {
+>   server localhost:8080;
 > }
 > server {
 > 	listen 80;
-> 	server_name 192.168.0.XX;
-> 
-> 	include /etc/nginx/conf.d/service-url.inc;
+> 	server_name localhost;
 > 
 > 	location / {
-> 		proxy_pass http://starter-server;
+> 		proxy_pass http://app;
 > 		proxy_set_header X-Real-IP $remote_addr;
 >       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 >       proxy_set_header Host $host;
@@ -144,11 +142,11 @@
 > 어쩔 수 없는 차선으로 Ubuntu 를 통해서 nginx 테스트를 진행하였다.
 
 ### Docker 실행
-> 현재 프로젝트 디렉터리 이동 후 docker 디렉터리로 이동한다.  
-> `docker-compose up -d --build` 를 통해서 Docker 를 실행한다.
+> 현재 프로젝트 디렉터리 이동 후 docker/web 디렉터리로 이동한다.  
+> `./stop-nginx.sh;./start-nginx.sh` 를 통해서 Docker 를 실행한다.
 
 ### 배포한 앱 실행
-> `docker exec -it nginx-starter-web /bin/bash`: Docker 내부로 이동한다.  
+> `docker exec -it web-nginx-starter /bin/bash`: Docker 내부로 이동한다.  
 > `cd /home/ec2-user/nginx-starter/scripts`: 스크립트 디렉터리로 이동  
 > `./start.sh && ./start.sh`: 애플리케이션을 2번 실행한다. start.sh 에 정의된 문장으로 인해서 profile 이 `prod1` 과 `prod2` 인 애플리케이션이 각각 실행된다.
 > Docker 밖 PC 의 브라우저에서 `http://localhost/profile` 을 통해서 현재 nginx 와 연결된 애플리케이션의 profile 을 확인한다.   

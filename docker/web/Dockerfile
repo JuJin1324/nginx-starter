@@ -7,7 +7,7 @@ RUN apt update; apt install -y sudo curl vim wget \
     nginx
 
 # setting nginx
-ADD nginx/application.conf /etc/nginx/conf.d/
+ADD nginx/starter.conf /etc/nginx/conf.d/
 ADD nginx/service-url.inc /etc/nginx/conf.d/
 
 # deploy application

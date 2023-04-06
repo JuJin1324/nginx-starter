@@ -1,2 +1,2 @@
-docker kill starter/nginx:1.0-local
-docker rm starter/nginx:1.0-local
+docker kill web-nginx-starter
+docker rm web-nginx-starter
